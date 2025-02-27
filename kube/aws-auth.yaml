@@ -11,7 +11,7 @@ data:
         - system:bootstrappers
         - system:nodes
   mapUsers: |
-    - userarn: arn:aws:iam::<your-account-id>:user/<your-username>
+    - userarn: arn:aws:iam::054037107907:user/mm1
       username: mm1
       groups:
         - system:masters
