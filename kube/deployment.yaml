@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: getting-started
+spec:
+  serviceName: "getting-started"
+  replicas: 2
+  selector:
+    matchLabels:
+      app: getting-started
+  template:
+    metadata:
+      labels:
+        app: getting-started
+    spec:
+      containers:
+      - name: getting-started
+        image: 054037107907.dkr.ecr.us-east-1.amazonaws.com/getting-started-app:latest
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - name: app-storage
+          mountPath: /usr/src/app/data
+      volumes:
+      - name: app-storage
+        persistentVolumeClaim:
+          claimName: app-pvc
+
